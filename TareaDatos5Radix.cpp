@@ -65,8 +65,7 @@ int main() {
     std::cout << "Lista después del ordenamiento:\n";
     list.print();
 
-    std::cin >> repeat;
-
+   
     
 
     return 0;
