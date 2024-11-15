@@ -9,6 +9,7 @@
 
 template <typename E>
 void radixSort(LinkedList<E>& list, int base) {
+    // Usar el método getMax de LinkedList para obtener el valor máximo
     E maxVal = list.getMax();
     int exp = 1;
 
@@ -46,19 +47,21 @@ int main() {
     std::cout << "Ingrese la base numérica a utilizar en el ordenamiento: ";
     std::cin >> base;
 
+    // Crear lista de enteros aleatorios usando LinkedList
     LinkedList<int> list;
     for (int i = 0; i < size; i++) {
-        list.append(rand() % 1000);
+        list.append(rand() % 1000); // Ejemplo: números aleatorios de 0 a 999
     }
 
     std::cout << "Lista antes del ordenamiento:\n";
     list.print();
 
-
+    // Medir tiempo de ejecución del ordenamiento
     auto start = std::chrono::high_resolution_clock::now();
     radixSort(list, base);
     auto end = std::chrono::high_resolution_clock::now();
 
+    // Calcular tiempo transcurrido
     std::chrono::duration<double> duration = end - start;
     std::cout << "Tiempo de ordenamiento: " << duration.count() << " segundos\n";
 
