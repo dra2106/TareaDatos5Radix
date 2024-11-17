@@ -37,14 +37,28 @@ void radixSort(LinkedList<E>& list, int base) {
 }
 
 int main() {
-    int size, base;
+    int size; 
+    int base;
     char repeat;
 
+    while (true)
+    {
+        std::cout << "Insertar tamaño ordenamiento: ";
+        std::cin >> size;
+        std::cout << "Insertar base numerica: ";
+        std::cin >> base;
+        if (size > 1 && base > 1 && base <20 && size < 1000000) {
+            break;
+        }
+        else
+        {
+            std::cin.clear();
+            std::cin.ignore();
+            system("cls");
+        }
+
+    }
     
-    std::cout << "Ingrese el tamaño de la lista a ordenar: ";
-    std::cin >> size;
-    std::cout << "Ingrese la base numérica a utilizar en el ordenamiento: ";
-    std::cin >> base;
 
     LinkedList<int> list;
     for (int i = 0; i < size; i++) {
@@ -52,19 +66,26 @@ int main() {
     }
 
     std::cout << "Lista antes del ordenamiento:\n";
-    list.print();
+    //list.print();
 
 
     auto start = std::chrono::high_resolution_clock::now();
     radixSort(list, base);
     auto end = std::chrono::high_resolution_clock::now();
 
-    std::chrono::duration<double> duration = end - start;
-    std::cout << "Tiempo de ordenamiento: " << duration.count() << " segundos\n";
+    
 
     std::cout << "Lista después del ordenamiento:\n";
-    list.print();
-
+    //list.print();
+    std::chrono::duration<double> duration = end - start;
+    if (duration.count()<0.0001) {
+        std::cout << "Tiempo de ordenamiento: " << "0" << " segundos\n";
+    }
+    else
+    {
+        std::cout << "Tiempo de ordenamiento: " << duration.count() << " segundos\n";
+    }
+    
    
     
 
